@@ -1,17 +1,22 @@
-bubbleSort = (array) => {
-  let counter = array.length - 1;
-  for (let i = 0; i < counter; i++){
-    swap (array[i], array[i + 1]);
-    counter--;
+let bubbleSort = (arr) => {
+  let isSorted = false;
+  let lastUnsorted = arr.length - 1;
+  while (!isSorted) {
+    isSorted = true;
+    for (let i = 0; i < lastUnsorted; i++) {
+      if (arr[i] > arr[i + 1]) {
+        arr = swap (arr, i, i+1)
+        isSorted = false;
+      }
+    }
+    lastUnsorted--;
   }
-  return array;
+  return arr;
 }
 
-function swap (a, b){
-
-  if (a > b){
-    return (b, a)
-  }
-  return (a, b)
-
+let swap = (arr, a, b) => {
+  let tmp = arr[a];
+  arr[a] = arr[b];
+  arr[b] = tmp;
+  return arr;
 }
