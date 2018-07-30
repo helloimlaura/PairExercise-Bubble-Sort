@@ -1,25 +1,23 @@
-xdescribe('Bubble Sort', function() {
-  it('handles an empty array', function() {
+describe('Bubble Sort', function() {
+  it('sorts an empty array', function() {
     expect(bubbleSort([])).toEqual([]);
   });
-});
 
-xdescribe('Bubble Sort', function() {
-  it('handles an array with one object', function() {
-    expect(bubbleSort([1])).toEqual([1]);
+  it('sorts an array with one object', function() {
+    expect(bubbleSort([7])).toEqual([7]);
   });
-});
 
-xdescribe('Bubble Sort', function() {
   it('handles an array with multiple objects', function() {
-    expect(bubbleSort([3, 1, 2])).toEqual([1, 2, 3]);
+    expect(bubbleSort([5, 2, 7, 9, 3, 5, 4, 1, 0])).toEqual([
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      5,
+      7,
+      9,
+    ]);
   });
-});
-
-xbeforeAll(function() {
-  spyOn(swap).and.callThrough(); // replace existing `tootsiepop['lick']` method
-});
-it('swapping our function takes 2 swaps', function() {
-  bubbleSort([3, 1, 2]);
-  expect(swap.calls.count()).toEqual(2);
 });
