@@ -1,5 +1,5 @@
 function split(wholeArray) {
-  let middle = Math.floor(wholeArray.length / 2);
+  let middle = Math.ceil(wholeArray.length / 2);
   let firstHalf = wholeArray.slice(0, middle);
   let secondHalf = wholeArray.slice(middle);
 
