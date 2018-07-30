@@ -1,5 +1,5 @@
 function split(wholeArray) {
-  let middle = Math.floor(wholeArray.length / 2);
+  let middle = Math.ceil(wholeArray.length / 2);
   let firstHalf = wholeArray.slice(0, middle);
   let secondHalf = wholeArray.slice(middle);
 
@@ -28,3 +28,6 @@ function mergeSort(array) {
   let splitArr = split(array);
   return merge(splitArr[0], splitArr[1]);
 }
+//
+// console.log(mergeSort([1, 3, 5, 2, 10]))
+// console.log(mergeSort([1, 3, 5, 2, 10, 11]))
