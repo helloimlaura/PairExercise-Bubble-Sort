@@ -1,25 +1,51 @@
-xdescribe('Bubble Sort', function() {
-  it('handles an empty array', function() {
+function numerically(a, b) {
+  return a - b;
+}
+
+function generateArray(size, lower, upper) {
+  let randomArray = [];
+  while (size--) {
+    let randomNum = Math.floor(lower + Math.random() * upper);
+    randomArray.push(randomNum);
+  }
+  return randomArray;
+}
+
+describe('Bubble Sort', function() {
+  it('sorts an empty array', function() {
     expect(bubbleSort([])).toEqual([]);
   });
-});
 
-xdescribe('Bubble Sort', function() {
-  it('handles an array with one object', function() {
-    expect(bubbleSort([1])).toEqual([1]);
+  it('sorts an array with one object', function() {
+    expect(bubbleSort([7])).toEqual([7]);
   });
-});
 
-xdescribe('Bubble Sort', function() {
   it('handles an array with multiple objects', function() {
-    expect(bubbleSort([3, 1, 2])).toEqual([1, 2, 3]);
+    expect(bubbleSort([5, 2, 7, 9, 3, 5, 4, 1, 0])).toEqual([
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      5,
+      7,
+      9,
+    ]);
   });
-});
 
-xbeforeAll(function() {
-  spyOn(swap).and.callThrough(); // replace existing `tootsiepop['lick']` method
-});
-it('swapping our function takes 2 swaps', function() {
-  bubbleSort([3, 1, 2]);
-  expect(swap.calls.count()).toEqual(2);
+  for (var i = 2; i < 103; i += 20) {
+    it('sorts an array of ' + i + ' random items', function() {
+      var arr = generateArray(i, 0, 100);
+      var sorted = arr.slice(0).sort(numerically);
+      expect(bubbleSort(arr)).toEqual(sorted);
+    });
+  }
+
+  it('swaps the expected number of times', function() {
+    spyOn(window, 'swap').and.callThrough();
+    bubbleSort([4, 6, 5, 1]);
+    expect(swap.calls.count()).toEqual(4);
+  });
+  // end of describe
 });
