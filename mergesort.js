@@ -1,5 +1,7 @@
+'use strict';
+
 function split(wholeArray) {
-  let middle = Math.ceil(wholeArray.length / 2);
+  let middle = wholeArray.length / 2;
   let firstHalf = wholeArray.slice(0, middle);
   let secondHalf = wholeArray.slice(middle);
 
@@ -20,14 +22,14 @@ const merge = (a, b) => {
       aIndex++;
     }
   }
-
+  // for (; aIndex < a.length; aIndex++) sorted.push(a[aIndex]);
+  // for (; bIndex < b.length; bIndex++) sorted.push(b[bIndex]);
+  // return sorted;
   return sorted.concat(a.slice(aIndex).concat(b.slice(bIndex)));
 };
 
 function mergeSort(array) {
-  let splitArr = split(array);
-  return merge(splitArr[0], splitArr[1]);
+  if (array.length < 2) return array;
+  let splits = split(array);
+  return merge(mergeSort(splits[0]), mergeSort(splits[1]));
 }
-//
-// console.log(mergeSort([1, 3, 5, 2, 10]))
-// console.log(mergeSort([1, 3, 5, 2, 10, 11]))
